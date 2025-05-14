@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimación de Producción de Biogás</title>
+    <style>
+        /* General */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f8f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #6bc970;
+            color: white;
+            padding: 15px;
+            margin: 0;
+        }
+
+        h2 {
+            color: #6bc970;
+            margin-top: 20px;
+        }
+
+        /* Formulario */
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            color: #333;
+        }
+
+        select, input[type="number"], input[type="range"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="range"] {
+            background: #e8f5e9;
+        }
+
+        button {
+            background-color: #6bc970;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #58a858;
+        }
+
+        /* Resultados */
+        #resultado {
+            background: #dff9e4;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #imagenBiodigestor {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Contenedor */
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #6bc970;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+        #resultadoTabla {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    #resultadoTabla th, #resultadoTabla td {
+        border: 1px solid #ddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    #resultadoTabla th {
+        background-color: #6bc970;
+        color: white;
+    }
+
+    #resultadoTabla tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #resultadoTabla tr:hover {
+        background-color: #ddd;
+    }
+    footer {
+        background: linear-gradient(to right, #6bc970, #58a858);
+        color: white;
+        text-align: center;
+        padding: 15px;
+        font-family: Arial, sans-serif;
+        margin-top: 20px;
+    }
+
+    footer .footer-content {
+        max-width: 600px;
+        margin: auto;
+        line-height: 1.6;
+    }
+
+    footer p {
+        margin: 5px 0;
+    }
+
+    footer strong {
+        font-size: 18px;
+        color: #fffbea;
+        font-family: 'Georgia', serif;
+    }
+    </style>
+</head>
+<body>
+    <h1>Estimación de Producción de Biogás</h1>
+
+    <div class="container">
+        <label for="tipo">Tipo de Sustrato:</label>
+        <select id="tipo">
+            <option value="" disabled selected>Seleccione un sustrato</option>
+            <option value="paja de trigo">Paja de trigo</option>
+            <option value="maíz - residuos de colecta">Maíz - residuos de colecta</option>
+            <option value="residuos de limpieza de granos">Residuos de limpieza de granos</option>
+            <option value="papa - residuos de colecta">Papa - residuos de colecta</option>
+            <option value="silo de maíz (planta verde)">Silo de maíz (planta verde)</option>
+            <option value="silo de pastos (verde)">Silo de pastos (verde)</option>
+            <option value="banano">Banano</option>
+            <option value="bananero con bananas">Bananero con bananas</option>
+            <option value="remolacha, hoja de colecta">Remolacha, hoja de colecta</option>
+            <option value="desperdicios de ganado lechero (con restos de alimento)">Desperdicios de ganado lechero (con restos de alimento)</option>
+            <option value="desechos de bovino">Desechos de bovino</option>
+            <option value="estiercol de bovino con paja">Estiercol de bovino con paja</option>
+            <option value="desechos de cerdo">Desechos de cerdo</option>
+            <option value="estiercol de cerdo">Estiercol de cerdo</option>
+            <option value="estiercol de gallinas">Estiercol de gallinas</option>
+            <option value="vinaza de caña de azúcar">Vinaza de caña de azúcar</option>
+            <option value="bagazo de caña de azúcar">Bagazo de caña de azúcar</option>
+            <option value="torta de filtración de caña de azúcar">Torta de filtración de caña de azúcar</option>
+            <option value="piña, fábrica de conservas">Piña, fábrica de conservas</option>
+            <option value="procesamiento de arroz">Procesamiento de arroz</option>
+            <option value="procesamiento de trigo">Procesamiento de trigo</option>
+            <option value="pulpa de café">Pulpa de café</option>
+            <option value="pulpa de naranja">Pulpa de naranja</option>
+            <option value="glicerina">Glicerina</option>
+            <option value="rumen (bovinos)">Rumen (bovinos)</option>
+            <option value="residuos organicos mezclados">Residuos orgánicos mezclados</option>
+            <option value="residuos organicos separados">Residuos orgánicos separados</option>
+            <option value="resto de alimentos">Resto de alimentos</option>
+        </select>
+
+        <label for="masa">Masa de Desecho Promedio Diario (kg):</label>
+        <input type="number" id="masa" name="masa" min="0" step="1" value="50"> kg
+
+        <label for="vol">Volumen de Desecho Promedio Diario (m³):</label>
+        <input type="number" id="vol" name="vol" min="0" step="0.1" value="10"> m³
+
+        <label for="tiempo">Tiempo de Consumo del Gas (horas):</label>
+        <input type="range" id="tiempo" name="tiempo" min="1" max="24" step="1" value="5" 
+               oninput="document.getElementById('tiempoValue').innerText = this.value">
+        <span id="tiempoValue">5</span> horas
+        <br><br>
+
+        <button onclick="procesarDatos()">Calcular</button>
+
+        <h2>Resultados:</h2>
+        <div id="resultadoContainer" style="display: none;">
+            <table id="resultadoTabla">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Resultado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las filas se generarán dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+        <footer>
+            <div class="footer-content">
+                <p>
+                     Ingeniería en Energía - 2024 | Diseñado para la Sostenibilidad
+                </p>
+                <p>
+                    <strong>Gabriela González Troche</strong> | Defensa de Tesis
+                </p>
+                <p>
+                    🌿 Inspirado en la Energía Renovable y el Futuro Verde 🌍
+                </p>
+            </div>
+        </footer>
+
+    <script>
+        const planilla = {
+    "paja de trigo": { "ST": 86, "categ": "agrícola", "produccionBiogas": 0.148, "Sv/St": 92 },
+    "maíz - residuos de colecta": { "ST": 35, "categ": "agrícola", "produccionBiogas": 0.081, "Sv/St": 92 },
+    "residuos de limpieza de granos": { "ST": 59, "categ": "agrícola", "produccionBiogas": 0.267, "Sv/St": 94 },
+    "papa - residuos de colecta": { "ST": 22, "categ": "agrícola", "produccionBiogas": 0.077, "Sv/St": 94 },
+    "silo de maíz (planta verde)": { "ST": 33, "categ": "agrícola", "produccionBiogas": 0.097, "Sv/St": 96 },
+    "silo de pastos (verde)": { "ST": 40, "categ": "agrícola", "produccionBiogas": 0.113, "Sv/St": 90 },
+    "banano": { "ST": 4.1, "categ": "agrícola", "produccionBiogas": 0.008, "Sv/St": 7 },
+    "bananero con bananas": { "ST": 7.4, "categ": "agrícola", "produccionBiogas": 0.025, "Sv/St": 88 },
+    "remolacha, hoja de colecta": { "ST": 16, "categ": "agrícola", "produccionBiogas": 0.03, "Sv/St": 78 },
+    "desperdicios de ganado lechero (con restos de alimento)": { "ST": 8.5, "categ": "ganadero", "produccionBiogas": 0.014, "Sv/St": 85 },
+    "desechos de bovino": { "ST": 9.5, "categ": "ganadero", "produccionBiogas": 0.015, "Sv/St": "75-82" },
+    "estiercol de bovino con paja": { "ST": 25, "categ": "ganadero", "produccionBiogas": 0.0275, "Sv/St": "68-76" },
+    "desechos de cerdo": { "ST": 7, "categ": "ganadero", "produccionBiogas": 0.018, "Sv/St": "75-85" },
+    "estiercol de cerdo": { "ST": 22.5, "categ": "ganadero", "produccionBiogas": 0.036, "Sv/St": "75-80" },
+    "estiercol de gallinas": { "ST": 32, "categ": "ganadero", "produccionBiogas": 0.048, "Sv/St": "63-80" },
+    "vinaza de caña de azúcar": { "ST": 4, "categ": "industria alimentaria", "produccionBiogas": 0.006, "Sv/St": "75-85" },
+    "bagazo de caña de azúcar": { "ST": 60, "categ": "industria alimentaria", "produccionBiogas": 0.281, "Sv/St": 93 },
+    "torta de filtración de caña de azúcar": { "ST": 25, "categ": "industria alimentaria", "produccionBiogas": 0.047, "Sv/St": 70 },
+    "piña, fábrica de conservas": { "ST": 15, "categ": "industria alimentaria", "produccionBiogas": 0.052, "Sv/St": 96 },
+    "procesamiento de arroz": { "ST": 91, "categ": "industria alimentaria", "produccionBiogas": 0.041, "Sv/St": 82 },
+    "procesamiento de trigo": { "ST": 88, "categ": "industria alimentaria", "produccionBiogas": 0.274, "Sv/St": 85 },
+    "pulpa de café": { "ST": 20, "categ": "industria alimentaria", "produccionBiogas": 0.045, "Sv/St": 93 },
+    "pulpa de naranja": { "ST": 21, "categ": "industria alimentaria", "produccionBiogas": 0.024, "Sv/St": 94.5 },
+    "glicerina": { "ST": 100, "categ": "industria alimentaria", "produccionBiogas": 0.423, "Sv/St": 99.5 },
+    "rumen (bovinos)": { "ST": 22.5, "categ": "industria alimentaria", "produccionBiogas": 0.043, "Sv/St": "66-84" },
+    "residuos organicos mezclados": { "ST": 35, "categ": "RSU", "produccionBiogas": 0.525, "Sv": 55 },
+    "residuos organicos separados": { "ST": 35, "categ": "RSU", "produccionBiogas": 0.35, "Sv": 75 },
+    "resto de alimentos": { "ST": 17.5, "categ": "RSU", "produccionBiogas": 0.85, "Sv": 90 }
+};
+
+
+function procesarDatos() {
+        const tipo = document.getElementById('tipo').value;
+        const masa = parseFloat(document.getElementById('masa').value);
+        const vol = parseFloat(document.getElementById('vol').value);
+        const tiempo = parseFloat(document.getElementById('tiempo').value);
+
+    
+        
+
+        if (!tipo) {
+            alert("Por favor, seleccione un tipo de sustrato.");
+            return;
+        }
+
+        const datos = planilla[tipo];
+        if (!datos) {
+            alert("El tipo de sustrato no se encuentra en la base de datos.");
+            return;
+        }
+
+        const { ST, categ, produccionBiogas,Sv } = datos;
+        
+        const volgas = produccionBiogas * 0.75* masa * ST * Sv / 10000;
+        const dimension = 30 * vol;
+        const energia = volgas * 0.3 * 5.9697;
+        const consumoGas = volgas / tiempo;
+        const potenciaelectrica = energia / tiempo;
+        const gasometro= volgas / 24 * (24 - tiempo);
+
+        const tipoDigest = ST < 20 ? "digestión húmeda" : "digestión seca";
+        
+        let biodigestor;
+        if (categ === 'agrícola') {
+        if (ST < 15) {
+            biodigestor = 'Laguna con mezcla mecánica';
+            // imagenSrc = 'laguna_mistura.jpg';
+        } else if (ST < 20) {
+            biodigestor = 'CSTR con mezclador, versión básica';
+            // imagenSrc = 'cstr_basica.jpg';
+        }
+    } else if (categ === 'industria de alimentos') {
+        if (ST < 6) {
+            biodigestor = 'UASB Industria';
+            imagenSrc = 'uasb_industria.jpg';
+        } else if (ST < 20) {
+            biodigestor = 'CSTR con mezcla versión avanzada';
+            //imagenSrc = 'cstr_avanzada.jpg';
+        }
+    } else if (categ === 'RSU') {
+        const humedad = ST;
+        if (humedad > 20) {
+            if (humedad > 35) {
+                biodigestor = 'Digestión anaeróbica seca, discontinua (Garaje)';
+                // imagenSrc = 'cstr_mezcla.jpg';
+            } else if (humedad > 25) {
+                biodigestor = 'Digestión anaeróbica seca, continua (piston o flujo horizontal)';
+            }
+            else {
+                biodigestor = 'digestión seca';
+                // imagenSrc = 'digestion_seca.jpg';
+            }
+        }
+        else if (humedad < 15) {
+            biodigestor = 'Digestion anaerobica humeda continua (CSTR)';
+        }
+        else {
+            biodigestor = 'digestion humeda'
+        }
+    }
+ 
+
+
+        // Mostrar resultados en una tabla
+        const resultadoContainer = document.getElementById('resultadoContainer');
+        const resultadoTablaBody = document.querySelector('#resultadoTabla tbody');
+        resultadoTablaBody.innerHTML = ""; // Limpiar contenido previo
+
+        const resultados = [
+            { descripcion: "Biodigestor sugerido", valor: biodigestor },
+            { descripcion: "Volumen del biodigestor", valor: `${dimension.toFixed(2)} m³` },
+            { descripcion: "Biogás producido por día", valor: `${volgas.toFixed(2)} m³` },
+            { descripcion: "Energía eléctrica producida", valor: `${energia.toFixed(2)} kWh` },
+            { descripcion: "Consumo de gas por hora", valor: `${consumoGas.toFixed(2)} m³/hora` },
+            { descripcion: "Potencia eléctrica", valor: `${potenciaelectrica.toFixed(2)} kW` },
+            { descripcion: "Volumen del gasometro", valor: `${gasometro.toFixed(2)} m³` },
+        ];
+
+        resultados.forEach(resultado => {
+            const row = document.createElement('tr'); // crea un elemento de fila de tabla (<tr>) utilizando el método document.createElement
+            const cellDescripcion = document.createElement('td'); // crea dos celdas de tabla (<td>), que contendrán los datos
+            const cellValor = document.createElement('td'); 
+
+            cellDescripcion.textContent = resultado.descripcion; // Es un texto que representa una descripción, por ejemplo, "Biogás producido por día"
+            cellValor.textContent = resultado.valor; //valor numerico de biogás producido
+
+            row.appendChild(cellDescripcion);
+            row.appendChild(cellValor);
+            resultadoTablaBody.appendChild(row);
+        });
+
+        resultadoContainer.style.display = 'block'; // Mostrar el contenedor de resultados
+
+        // Mostrar imagen del biodigestor
+        document.getElementById('imagenBiodigestor').src = "ruta/a/la/imagen.jpg"; // Ajustar ruta
+        document.getElementById('imagenBiodigestor').style.display = "block";
+    }
+    </script>
+</body>
+</html>
