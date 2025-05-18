@@ -192,10 +192,10 @@
         </select>
 
         <label for="masa">Masa de Desecho Promedio Diario (kg):</label>
-        <input type="number" id="masa" name="masa" min="0" step="1" value="50"> kg
+        <input type="number" id="masa" name="masa" min="0" step="1" value="0"> kg
 
         <label for="vol">Volumen de Desecho Promedio Diario (m³):</label>
-        <input type="number" id="vol" name="vol" min="0" step="0.1" value="10"> m³
+        <input type="number" id="vol" name="vol" min="0" step="0.1" value="0"> m³
 
         <label for="tiempo">Tiempo de Consumo del Gas (horas):</label>
         <input type="range" id="tiempo" name="tiempo" min="1" max="24" step="1" value="5" 
@@ -222,10 +222,10 @@
         <footer>
             <div class="footer-content">
                 <p>
-                     Ingeniería en Energía - 2024 | Diseñado para la Sostenibilidad
+                     Ingeniería en Energía - 2025 | Diseñado para la Sostenibilidad
                 </p>
                 <p>
-                    <strong>Gabriela González Troche</strong> | Defensa de Tesis
+                    <strong>Gabriela González Troche</strong> | Ingeniera en Energía
                 </p>
                 <p>
                     🌿 Inspirado en la Energía Renovable y el Futuro Verde 🌍
@@ -235,31 +235,31 @@
 
     <script>
         const planilla = {
-    "paja de trigo": { "ST": 86, "categ": "agrícola", "produccionBiogas": 0.148, "Sv/St": 92 },
-    "maíz - residuos de colecta": { "ST": 35, "categ": "agrícola", "produccionBiogas": 0.081, "Sv/St": 92 },
-    "residuos de limpieza de granos": { "ST": 59, "categ": "agrícola", "produccionBiogas": 0.267, "Sv/St": 94 },
-    "papa - residuos de colecta": { "ST": 22, "categ": "agrícola", "produccionBiogas": 0.077, "Sv/St": 94 },
-    "silo de maíz (planta verde)": { "ST": 33, "categ": "agrícola", "produccionBiogas": 0.097, "Sv/St": 96 },
-    "silo de pastos (verde)": { "ST": 40, "categ": "agrícola", "produccionBiogas": 0.113, "Sv/St": 90 },
-    "banano": { "ST": 4.1, "categ": "agrícola", "produccionBiogas": 0.008, "Sv/St": 7 },
-    "bananero con bananas": { "ST": 7.4, "categ": "agrícola", "produccionBiogas": 0.025, "Sv/St": 88 },
-    "remolacha, hoja de colecta": { "ST": 16, "categ": "agrícola", "produccionBiogas": 0.03, "Sv/St": 78 },
-    "desperdicios de ganado lechero (con restos de alimento)": { "ST": 8.5, "categ": "ganadero", "produccionBiogas": 0.014, "Sv/St": 85 },
-    "desechos de bovino": { "ST": 9.5, "categ": "ganadero", "produccionBiogas": 0.015, "Sv/St": "75-82" },
-    "estiercol de bovino con paja": { "ST": 25, "categ": "ganadero", "produccionBiogas": 0.0275, "Sv/St": "68-76" },
-    "desechos de cerdo": { "ST": 7, "categ": "ganadero", "produccionBiogas": 0.018, "Sv/St": "75-85" },
-    "estiercol de cerdo": { "ST": 22.5, "categ": "ganadero", "produccionBiogas": 0.036, "Sv/St": "75-80" },
-    "estiercol de gallinas": { "ST": 32, "categ": "ganadero", "produccionBiogas": 0.048, "Sv/St": "63-80" },
-    "vinaza de caña de azúcar": { "ST": 4, "categ": "industria alimentaria", "produccionBiogas": 0.006, "Sv/St": "75-85" },
-    "bagazo de caña de azúcar": { "ST": 60, "categ": "industria alimentaria", "produccionBiogas": 0.281, "Sv/St": 93 },
-    "torta de filtración de caña de azúcar": { "ST": 25, "categ": "industria alimentaria", "produccionBiogas": 0.047, "Sv/St": 70 },
-    "piña, fábrica de conservas": { "ST": 15, "categ": "industria alimentaria", "produccionBiogas": 0.052, "Sv/St": 96 },
-    "procesamiento de arroz": { "ST": 91, "categ": "industria alimentaria", "produccionBiogas": 0.041, "Sv/St": 82 },
-    "procesamiento de trigo": { "ST": 88, "categ": "industria alimentaria", "produccionBiogas": 0.274, "Sv/St": 85 },
-    "pulpa de café": { "ST": 20, "categ": "industria alimentaria", "produccionBiogas": 0.045, "Sv/St": 93 },
-    "pulpa de naranja": { "ST": 21, "categ": "industria alimentaria", "produccionBiogas": 0.024, "Sv/St": 94.5 },
-    "glicerina": { "ST": 100, "categ": "industria alimentaria", "produccionBiogas": 0.423, "Sv/St": 99.5 },
-    "rumen (bovinos)": { "ST": 22.5, "categ": "industria alimentaria", "produccionBiogas": 0.043, "Sv/St": "66-84" },
+    "paja de trigo": { "ST": 86, "categ": "agrícola", "produccionBiogas": 0.148, "Sv": 92 },
+    "maíz - residuos de colecta": { "ST": 35, "categ": "agrícola", "produccionBiogas": 0.081, "Sv": 92 },
+    "residuos de limpieza de granos": { "ST": 59, "categ": "agrícola", "produccionBiogas": 0.267, "Sv": 94 },
+    "papa - residuos de colecta": { "ST": 22, "categ": "agrícola", "produccionBiogas": 0.077, "Sv": 94 },
+    "silo de maíz (planta verde)": { "ST": 33, "categ": "agrícola", "produccionBiogas": 0.097, "Sv": 96 },
+    "silo de pastos (verde)": { "ST": 40, "categ": "agrícola", "produccionBiogas": 0.113, "Sv": 90 },
+    "banano": { "ST": 4.1, "categ": "agrícola", "produccionBiogas": 0.008, "Sv": 7 },
+    "bananero con bananas": { "ST": 7.4, "categ": "agrícola", "produccionBiogas": 0.025, "Sv": 88 },
+    "remolacha, hoja de colecta": { "ST": 16, "categ": "agrícola", "produccionBiogas": 0.03, "Sv": 78 },
+    "desperdicios de ganado lechero (con restos de alimento)": { "ST": 8.5, "categ": "ganadero", "produccionBiogas": 0.014, "Sv": 85 },
+    "desechos de bovino": { "ST": 9.5, "categ": "ganadero", "produccionBiogas": 0.015, "Sv": 78.5 },
+    "estiercol de bovino con paja": { "ST": 25, "categ": "ganadero", "produccionBiogas": 0.0275, "Sv": 72 },
+    "desechos de cerdo": { "ST": 7, "categ": "ganadero", "produccionBiogas": 0.018, "Sv": 80 },
+    "estiercol de cerdo": { "ST": 22.5, "categ": "ganadero", "produccionBiogas": 0.036, "Sv": 77.5 },
+    "estiercol de gallinas": { "ST": 32, "categ": "ganadero", "produccionBiogas": 0.048, "Sv": 71.5 },
+    "vinaza de caña de azúcar": { "ST": 4, "categ": "industria alimentaria", "produccionBiogas": 0.006, "Sv": "75-85" },
+    "bagazo de caña de azúcar": { "ST": 60, "categ": "industria alimentaria", "produccionBiogas": 0.281, "Sv": 93 },
+    "torta de filtración de caña de azúcar": { "ST": 25, "categ": "industria alimentaria", "produccionBiogas": 0.047, "Sv": 70 },
+    "piña, fábrica de conservas": { "ST": 15, "categ": "industria alimentaria", "produccionBiogas": 0.052, "Sv": 96 },
+    "procesamiento de arroz": { "ST": 91, "categ": "industria alimentaria", "produccionBiogas": 0.041, "Sv": 82 },
+    "procesamiento de trigo": { "ST": 88, "categ": "industria alimentaria", "produccionBiogas": 0.274, "Sv": 85 },
+    "pulpa de café": { "ST": 20, "categ": "industria alimentaria", "produccionBiogas": 0.045, "Sv": 93 },
+    "pulpa de naranja": { "ST": 21, "categ": "industria alimentaria", "produccionBiogas": 0.024, "Sv": 94.5 },
+    "glicerina": { "ST": 100, "categ": "industria alimentaria", "produccionBiogas": 0.423, "Sv": 99.5 },
+    "rumen (bovinos)": { "ST": 22.5, "categ": "industria alimentaria", "produccionBiogas": 0.043, "Sv": 75 },
     "residuos organicos mezclados": { "ST": 35, "categ": "RSU", "produccionBiogas": 0.525, "Sv": 55 },
     "residuos organicos separados": { "ST": 35, "categ": "RSU", "produccionBiogas": 0.35, "Sv": 75 },
     "resto de alimentos": { "ST": 17.5, "categ": "RSU", "produccionBiogas": 0.85, "Sv": 90 }
@@ -287,13 +287,19 @@ function procesarDatos() {
         }
 
         const { ST, categ, produccionBiogas,Sv } = datos;
+        const nivmet=0.75; // nivel de metanización
+        const potmet = 0.6; //potencial de metanización
+        const eficiencia = 0.3; //eficiencia del motor
+        const pci= 5.9697;
+        const trh=30;
+
         
-        const volgas = produccionBiogas * 0.75* masa * ST * Sv / 10000;
-        const dimension = 30 * vol;
-        const energia = volgas * 0.3 * 5.9697;
+        const volgas = produccionBiogas * nivmet* masa * ST * Sv*potmet / 10000;
+        const dimension = trh * vol;
+        const energia = volgas * eficiencia * pci* (1/potmet);
         const consumoGas = volgas / tiempo;
         const potenciaelectrica = energia / tiempo;
-        const gasometro= volgas / 24 * (24 - tiempo);
+       // const gasometro= volgas / 24 * (24 - tiempo);
 
         const tipoDigest = ST < 20 ? "digestión húmeda" : "digestión seca";
         
@@ -301,10 +307,10 @@ function procesarDatos() {
         if (categ === 'agrícola') {
         if (ST < 15) {
             biodigestor = 'Laguna con mezcla mecánica';
-            // imagenSrc = 'laguna_mistura.jpg';
+           
         } else if (ST < 20) {
             biodigestor = 'CSTR con mezclador, versión básica';
-            // imagenSrc = 'cstr_basica.jpg';
+           
         }
     } else if (categ === 'industria de alimentos') {
         if (ST < 6) {
@@ -312,20 +318,20 @@ function procesarDatos() {
             imagenSrc = 'uasb_industria.jpg';
         } else if (ST < 20) {
             biodigestor = 'CSTR con mezcla versión avanzada';
-            //imagenSrc = 'cstr_avanzada.jpg';
+            
         }
     } else if (categ === 'RSU') {
         const humedad = ST;
         if (humedad > 20) {
             if (humedad > 35) {
                 biodigestor = 'Digestión anaeróbica seca, discontinua (Garaje)';
-                // imagenSrc = 'cstr_mezcla.jpg';
+                
             } else if (humedad > 25) {
                 biodigestor = 'Digestión anaeróbica seca, continua (piston o flujo horizontal)';
             }
             else {
                 biodigestor = 'digestión seca';
-                // imagenSrc = 'digestion_seca.jpg';
+                
             }
         }
         else if (humedad < 15) {
@@ -350,7 +356,7 @@ function procesarDatos() {
             { descripcion: "Energía eléctrica producida", valor: `${energia.toFixed(2)} kWh` },
             { descripcion: "Consumo de gas por hora", valor: `${consumoGas.toFixed(2)} m³/hora` },
             { descripcion: "Potencia eléctrica", valor: `${potenciaelectrica.toFixed(2)} kW` },
-            { descripcion: "Volumen del gasometro", valor: `${gasometro.toFixed(2)} m³` },
+           // { descripcion: "Volumen del gasometro", valor: `${gasometro.toFixed(2)} m³` },
         ];
 
         resultados.forEach(resultado => {
@@ -368,9 +374,7 @@ function procesarDatos() {
 
         resultadoContainer.style.display = 'block'; // Mostrar el contenedor de resultados
 
-        // Mostrar imagen del biodigestor
-        document.getElementById('imagenBiodigestor').src = "ruta/a/la/imagen.jpg"; // Ajustar ruta
-        document.getElementById('imagenBiodigestor').style.display = "block";
+        
     }
     </script>
 </body>
