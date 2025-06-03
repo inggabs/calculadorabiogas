@@ -288,13 +288,14 @@ function procesarDatos() {
 
         const { ST, categ, produccionBiogas,Sv } = datos;
         const nivmet=0.75; // nivel de metanización
-        const potmet = 0.6; //potencial de metanización
+        const potmet = 0.6; //contenido de metano
         const eficiencia = 0.3; //eficiencia del motor
         const pci= 5.9697;
         const trh=30;
 
-        
-        const volgas = produccionBiogas * nivmet* masa * ST * Sv*potmet / 10000;
+//BG=M∙(%ST)/100∙(%SV)/100⋅B_o∙(%Met)/100∙100/(%CH_4 )
+    
+        const volgas = masa* ST* Sv* produccionBiogas * nivmet* (1/potmet)/ 10000;
         const dimension = trh * vol;
         const energia = volgas * eficiencia * pci* (1/potmet);
         const consumoGas = volgas / tiempo;
